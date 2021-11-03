@@ -11,7 +11,7 @@ const DIRECTIONSMAP = {
 };
 
 const MESSAGESMAP = {
-  "?": "Built different",
+  i: "Built different",
   h: "Hello there.",
   l: "Lets play!",
   n: "I am snek.",
