@@ -1,23 +1,22 @@
 let connection;
 
 const handleUserInput = (input) => {
-  switch (input) {
-    case '\u0003':
-      console.log("Thank you for playing.")
-      process.exit();
-    case "w":
-      connection.write("Move: up")
-      break;
-    case "a":
-      connection.write("Move: left")
-      break;
-    case "s":
-      connection.write("Move: down")
-      break;
-    case "d":
-      connection.write("Move: right")
-      break;
+  
+  if (input === '\u0003') {
+    console.log("Thank you for playing.")
+    process.exit();
+  };
+
+  const directionsMap = {
+    w: "Move: up",
+    a: "Move: left",
+    s: "Move: down",
+    d: "Move: right"
   }
+
+  if (!directionsMap[input]) return
+
+  connection.write(directionsMap[input]);
 }
 
 const setupInput = function (conn) {
@@ -28,6 +27,8 @@ const setupInput = function (conn) {
   stdin.resume();
 
   stdin.on("data", handleUserInput);
+
+
 
   return stdin;
 };
