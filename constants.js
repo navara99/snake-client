@@ -1,4 +1,4 @@
-const IP = "10.0.2.15";
+const IP = "165.227.47.243";
 const PORT = "50541";
 const INITIALS = "TN";
 const INTERVAL = 50;
