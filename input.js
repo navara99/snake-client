@@ -1,23 +1,27 @@
+let connection;
+
 const handleUserInput = (input) => {
   switch (input) {
     case '\u0003':
+      console.log("Thank you for playing.")
       process.exit();
     case "w":
-      console.log(input)
+      connection.write("Move: up")
       break;
     case "a":
-      console.log(input)
+      connection.write("Move: left")
       break;
     case "s":
-      console.log(input)
+      connection.write("Move: down")
       break;
     case "d":
-      console.log(input)
+      connection.write("Move: right")
       break;
   }
 }
 
-const setupInput = function () {
+const setupInput = function (conn) {
+  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
