@@ -1,7 +1,20 @@
 const handleUserInput = (input) => {
-  if (input === '\u0003') {
-    process.exit();
-  };
+  switch (input) {
+    case '\u0003':
+      process.exit();
+    case "w":
+      console.log(input)
+      break;
+    case "a":
+      console.log(input)
+      break;
+    case "s":
+      console.log(input)
+      break;
+    case "d":
+      console.log(input)
+      break;
+  }
 }
 
 const setupInput = function () {
