@@ -6,11 +6,11 @@ const connect = function() {
     port: "50541",
   });
 
+  conn.setEncoding("utf8");
+
   conn.on('data', (data) => {
     console.log('Message from Server: ' + data);
   });
-
-  conn.setEncoding("utf8");
 
   return conn;
 };
