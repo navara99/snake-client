@@ -1,5 +1,5 @@
 const net = require("net");
-const { INITIALS, IP, PORT } = require("./constants");
+const { INITIALS, IP, PORT, DIRECTIONSMAP } = require("./constants");
 
 const connect = function () {
   console.log("Connecting ...");
@@ -19,6 +19,10 @@ const connect = function () {
     console.log("Successfully connected to game server");
     conn.write(`Name: ${INITIALS}`);
   });
+
+  conn.on("end", ()=> {
+    console.log("Disconnected from the server.")
+  })
 
   return conn;
 };
