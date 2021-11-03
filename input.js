@@ -1,3 +1,5 @@
+const { MESSAGESMAP, DIRECTIONSMAP, INTERVAL } = require("./constants")
+
 let connection;
 
 const handleUserInput = (input) => {
@@ -7,37 +9,25 @@ const handleUserInput = (input) => {
     process.exit();
   };
 
-  const directionsMap = {
-    w: "up",
-    a: "left",
-    s: "down",
-    d: "right"
-  };
+  if (DIRECTIONSMAP[input]) {
+    setInterval(() => {
+      connection.write("Move: " + DIRECTIONSMAP[input]);
+    }, INTERVAL);
+  }
 
-  const messagesMap = {
-    "?" : "Built different",
-    h : "Hello there.",
-    l: "Lets play!",
-    n: "I am snek.",
-    p: ":)"
-  };
-
-  if (directionsMap[input]) connection.write("Move: " + directionsMap[input]);
-  if (messagesMap[input]) connection.write("Say: " + messagesMap[input]);
+  if (MESSAGESMAP[input]) connection.write("Say: " + MESSAGESMAP[input]);
 
 }
 
 const setupInput = function (conn) {
-  connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   stdin.resume();
 
+  connection = conn;
+
   stdin.on("data", handleUserInput);
-
-
-
 
   return stdin;
 };
